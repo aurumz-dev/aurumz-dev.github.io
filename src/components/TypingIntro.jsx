@@ -11,71 +11,78 @@ export default function TypingIntro({ onTypingComplete }) {
   const typingStarted = useRef(false);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setCurrentPath(window.location.pathname);
-    }
+    if (typeof window === 'undefined') return;
 
+    setCurrentPath(window.location.pathname);
     if (typingStarted.current) return;
     typingStarted.current = true;
 
-    async function runTyping() {
-      await new TypeIt(titleRef.current, {
-        speed: 30,
-        waitUntilVisible: true,
-        cursor: true,
-        afterComplete: async () => {
-          const cursor = titleRef.current.querySelector('.ti-cursor');
-          if (cursor) cursor.remove();
+    // Delay to ensure DOM is ready on GH Pages
+    const timeout = setTimeout(() => {
+      if (!titleRef.current || !subtitleRef.current) return; // Safety check
 
-          await new Promise(res => setTimeout(res, 1000));
+      async function runTyping() {
+        await new TypeIt(titleRef.current, {
+          speed: 30,
+          waitUntilVisible: true,
+          cursor: true,
+          afterComplete: async () => {
+            const cursor = titleRef.current.querySelector('.ti-cursor');
+            if (cursor) cursor.remove();
 
-          await new TypeIt(subtitleRef.current, {
-            speed: 10,
-            waitUntilVisible: true,
-            cursor: true,
-            afterComplete: async () => {
+            await new Promise(res => setTimeout(res, 1000));
 
-              await new Promise(res => setTimeout(res, 2000));
+            if (!subtitleRef.current) return;
 
-              document.querySelectorAll('.code-tag').forEach(el => {
-                el.classList.add('slide-left-blur');
-                setTimeout(() => (el.style.display = 'none'), 600);
-              });
+            await new TypeIt(subtitleRef.current, {
+              speed: 10,
+              waitUntilVisible: true,
+              cursor: true,
+              afterComplete: async () => {
+                await new Promise(res => setTimeout(res, 2000));
 
-              wrapperRef.current.classList.add('shift-left');
+                document.querySelectorAll('.code-tag').forEach(el => {
+                  el.classList.add('slide-left-blur');
+                  setTimeout(() => (el.style.display = 'none'), 600);
+                });
 
-              const navPanel = document.getElementById('nav-panel');
-              if (navPanel) {
-                navPanel.classList.remove('hidden');
-                setTimeout(() => {
-                  navPanel.classList.add('active');
-                  if (currentPath === '/') {
-                    setShowSocials(true);
-                  }
-                }, 50);
+                if (wrapperRef.current) wrapperRef.current.classList.add('shift-left');
+
+                const navPanel = document.getElementById('nav-panel');
+                if (navPanel) {
+                  navPanel.classList.remove('hidden');
+                  setTimeout(() => {
+                    navPanel.classList.add('active');
+                    if (currentPath === '/') {
+                      setShowSocials(true);
+                    }
+                  }, 50);
+                }
+
+                const subCursor = subtitleRef.current.querySelector('.ti-cursor');
+                if (subCursor) subCursor.remove();
+
+                if (onTypingComplete) onTypingComplete();
               }
+            })
+              .type(`<span class="code-tag">print("</span><span>I<strong style="color:#E9E3DF;">'</strong>m Vihaan<strong style="color:#E9E3DF;">,</strong></span><span class="code-tag">")</span>`)
+              .pause(100).break()
+              .type(`<span class="code-tag">print("</span><span>Also known as Aurumz<strong style="color:#E9E3DF;">.</strong></span><span class="code-tag">")</span>`)
+              .pause(100).break()
+              .type(`<span class="code-tag">print("</span><span>A Medical Student <strong style="color:#E9E3DF;"> & </strong> Creator with a keen interest in Developing<strong style="color:#E9E3DF;">,</strong></span><span class="code-tag">")</span>`)
+              .pause(100).break()
+              .type(`<span class="code-tag">print("</span><span>Animating <strong style="color:#E9E3DF;"> & </strong> Open-Access<strong style="color:#E9E3DF;">.</strong></span><span class="code-tag">")</span>`)
+              .go();
+          }
+        })
+          .type(`<span class="code-tag">print("</span><span>Hello there!</span><span class="code-tag">")</span>`)
+          .go();
+      }
 
-              const subCursor = subtitleRef.current.querySelector('.ti-cursor');
-              if (subCursor) subCursor.remove();
+      runTyping();
+    }, 50); // Delay to ensure hydration
 
-              if (onTypingComplete) onTypingComplete();
-            }
-          })
-            .type(`<span class="code-tag">print("</span><span>I<strong style="color:#E9E3DF;">'</strong>m Vihaan<strong style="color:#E9E3DF;">,</strong></span><span class="code-tag">")</span>`)
-            .pause(100).break()
-            .type(`<span class="code-tag">print("</span><span>Also known as Aurumz<strong style="color:#E9E3DF;">.</strong></span><span class="code-tag">")</span>`)
-            .pause(100).break()
-            .type(`<span class="code-tag">print("</span><span>A Medical Student <strong style="color:#E9E3DF;"> & </strong> Creator with a keen interest in Developing<strong style="color:#E9E3DF;">,</strong></span><span class="code-tag">")</span>`)
-            .pause(100).break()
-            .type(`<span class="code-tag">print("</span><span>Animating <strong style="color:#E9E3DF;"> & </strong> Open-Access<strong style="color:#E9E3DF;">.</strong></span><span class="code-tag">")</span>`)
-            .go();
-        }
-      })
-        .type(`<span class="code-tag">print("</span><span>Hello there!</span><span class="code-tag">")</span>`)
-        .go();
-    }
-
-    runTyping();
+    return () => clearTimeout(timeout);
   }, []);
 
   return (
