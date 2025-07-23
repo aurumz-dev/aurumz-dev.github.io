@@ -1,9 +1,5 @@
-// @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 
-import preact from '@astrojs/preact';
-
-// https://astro.build/config
 export default defineConfig({
-  integrations: [preact()]
+  base: "/", // this is correct for aurumz-dev.github.io
 });
