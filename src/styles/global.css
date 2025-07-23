@@ -11,14 +11,14 @@ html, body {
   font-family: 'Fira Code', monospace;
   background: #465C88;
   color: #465C88;
-  overflow-x: hidden;
+  overflow-x: visible;  /* Change this from hidden to visible */
   scroll-behavior: smooth;
 }
 
 /* FULLSCREEN CONTAINER */
 .aspect-ratio-container {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100vh; /* Use 100% to ensure responsive sizing */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -35,7 +35,7 @@ html, body {
 
 .main-title {
   color: #E9E3DF;
-  font-size: 3rem;
+  font-size: 3rem; /* Ensure this fits with screen sizes */
   font-family: 'JetBrains Mono', monospace;
   margin-bottom: 1rem;
   line-height: 1.1;
@@ -56,7 +56,6 @@ html, body {
   color: #465C88;
   opacity: 1;
   font-weight: bold;
-  /* REMOVED: duplicate font-family */
   transition: transform 0.6s ease-out, opacity 0.6s ease-out;
 }
 
@@ -103,7 +102,7 @@ html, body {
 
 /* SECTION STYLES */
 .page-container {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   overflow-y: auto;
   scroll-snap-type: y mandatory;
@@ -159,9 +158,7 @@ html, body {
   background-color: #0e0e0e;
 }
 
-
-
-
+/* SCROLL BUTTON */
 .scroll-btn {
   position: absolute;
   bottom: 50px;
