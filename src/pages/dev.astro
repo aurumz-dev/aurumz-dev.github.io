@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import DevIntro from '../components/DevIntro.jsx';
+---
+
+<Layout>
+  <head slot="head">
+    <title>Dev | Aurumz</title>
+  </head>
+
+  <DevIntro client:load />
+</Layout>
