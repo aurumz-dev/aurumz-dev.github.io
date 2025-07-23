@@ -1,0 +1,234 @@
+/* GLOBAL RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%; /* CHANGED: height → min-height */
+  font-family: 'Fira Code', monospace;
+  background: #465C88;
+  color: #465C88;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* FULLSCREEN CONTAINER */
+.aspect-ratio-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* TYPING SECTION STYLES */
+.typing-wrapper {
+  text-align: left;
+  max-width: 90%;
+  padding-left: 8rem;
+}
+
+.main-title {
+  color: #E9E3DF;
+  font-size: 3rem;
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.subtitle {
+  font-size: 2rem;
+  font-family: 'JetBrains Mono', sans-serif;
+  font-weight: 400;
+  color: #f5a97f;
+  letter-spacing: 0.02em;
+  word-spacing: 0.1em;
+  line-height: 1.5;
+}
+
+/* Code-tag styling */
+.code-tag {
+  color: #465C88;
+  opacity: 1;
+  font-weight: bold;
+  /* REMOVED: duplicate font-family */
+  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+}
+
+.slide-left-blur {
+  transform: translateX(-100px) blur(2px);
+  opacity: 0;
+}
+
+/* NAVIGATION PANEL */
+.nav-panel {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  display: flex;
+  gap: 40px;
+  transition: all 0.5s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav-panel.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #E9E3DF;
+  font-family: Helvetica;
+  font-weight: 500;
+  font-size: 1.25rem;
+  border-bottom: 3px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.nav-link:hover {
+  border-color: #465C88;
+}
+
+.nav-link.active {
+  color: #465C88;
+  border-color: #465C88;
+}
+
+/* SECTION STYLES */
+.page-container {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+}
+
+.section {
+  height: 100vh;
+  width: 100%;
+  scroll-snap-align: start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+}
+
+.typing-section {
+  background: #0e0e0e;
+  color: #E9E3DF;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+}
+
+.second-section {
+  background: #0e0e0e;
+  color: #465C88;
+  flex-direction: column;
+  text-align: center;
+}
+
+/* BUTTONS */
+.scroll-button button {
+  background: transparent;
+  border: 2px solid #465C88;
+  color: #E9E3DF;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+}
+
+.scroll-button button:hover {
+  background: #465C88;
+  color: #0e0e0e;
+}
+
+/* APP BACKGROUND */
+.app-root {
+  margin: 0;
+  padding: 0;
+  font-family: 'Fira Code', monospace;
+  background-color: #0e0e0e;
+}
+
+
+
+
+.scroll-btn {
+  position: absolute;
+  bottom: 50px;
+  font-size: 2rem;
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  animation: bounce 2s infinite;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.scroll-btn.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.down-arrow {
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 30px;
+  animation: bounce 1.6s infinite;
+  cursor: pointer;
+  color: #ffe8d8;
+  user-select: none;
+  transition: transform 0.2s;
+}
+
+.down-arrow:hover {
+  transform: scale(1.2);
+}
+
+/* SOCIAL LINKS */
+.social-links {
+  position: absolute;
+  top: 5px;
+  left: 30px;
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.social-links svg {
+  transition: transform 0.2s ease;
+  animation: subtleBounce 2s ease-in-out infinite;
+}
+
+.social-links a:hover svg {
+  transform: scale(1.1);
+  stroke: #f5a97f;
+}
+
+.ti-cursor {
+  font-size: 0.3em !important;
+  width: 0.5em !important;
+  background-color: #E9E3DF !important;
+  color: transparent !important;
+  display: inline-block !important;
+  vertical-align: bottom !important;
+}
