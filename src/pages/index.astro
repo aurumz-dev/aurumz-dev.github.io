@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import TypingIntro from '../components/TypingIntro.jsx';
 import MultiSectionPage from '../components/MultiSectionPage.jsx';
 ---
 
@@ -8,5 +9,9 @@ import MultiSectionPage from '../components/MultiSectionPage.jsx';
     <title>Home | Aurumz</title>
   </head>
 
+  <!-- Typing intro should load immediately -->
+  <TypingIntro client:load />
+
+  <!-- Rest of your multi-section page -->
   <MultiSectionPage client:load />
 </Layout>
