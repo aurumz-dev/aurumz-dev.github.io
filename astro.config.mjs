@@ -1,5 +1,7 @@
-import { defineConfig } from "astro/config";
+import { defineConfig } from 'astro/config';
+import preact from '@astrojs/preact';
 
 export default defineConfig({
-  base: "/", // this is correct for aurumz-dev.github.io
+  integrations: [preact()],
+  // ...other config options
 });
