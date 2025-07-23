@@ -5,15 +5,11 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "deploy": "gh-pages -d dist -r https://github.com/aurumz-dev/aurumz-dev.github.io.git"
+    "preview": "astro preview"
   },
   "dependencies": {
     "@astrojs/preact": "^4.1.0",
     "astro": "^5.12.2",
     "preact": "^10.26.9"
-  },
-  "devDependencies": {
-    "gh-pages": "^6.3.0"
   }
 }
