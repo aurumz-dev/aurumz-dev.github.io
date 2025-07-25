@@ -2,49 +2,136 @@
 export interface Props {
   id?: string;
   content?: string;
-  image?: string;
+  images?: string[];
   reverse?: boolean;
 }
 const {
   id = "second-section",
   content = "",
-  image = "/default-image.jpg",
+  images = ["/default-image1.jpg", "/default-image2.jpg"],
   reverse = false,
 } = Astro.props;
 ---
-<section id={id} class="second-section">
+
+<section id={id} class={`second-section hidden`}>
   <div class={`content ${reverse ? "reverse" : ""}`}>
     <div class="text">
       <p>{content}</p>
     </div>
-    <div class="image">
-      <img src={image} alt="Section image" />
+    <div class="images-row">
+      {images.map((src) => (
+        <div class="image-wrapper">
+          <img src={src} alt="Section image" />
+        </div>
+      ))}
     </div>
   </div>
 </section>
 
+<script type="module">
+  window.addEventListener('DOMContentLoaded', () => {
+    const section = document.getElementById("second-section");
+    if (!section) return;
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          section.classList.add('visible');
+          section.classList.remove('hidden');
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.1 });
+
+    observer.observe(section);
+  });
+</script>
+
 <style>
   .second-section {
-    padding: 4rem;
+    padding: 0 0; /* vertical padding only, no horizontal */
     background: #0e0e0e;
+    height: 380px;
+    width: 100vw;
+    box-sizing: border-box;
+    border-top: 2px solid #ffffff0d;   /* top line */
+    border-bottom: 2px solid #ffffff0d;
+    transition: opacity 1s ease, transform 1s ease;
   }
+
   .content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 2rem;
-    flex-wrap: wrap;
+    gap: 7rem;
+    flex-wrap: nowrap;
+    max-width: 40vw;
+    margin: 0 auto;
+    padding: 10 1rem; /* slight padding inside to prevent edge overflow */
   }
+
   .content.reverse {
     flex-direction: row-reverse;
   }
+
   .text {
     flex: 1;
     min-width: 300px;
   }
-  .image img {
-    max-width: 100%;
-    border-radius: 1rem;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+
+  .text p {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #ccc;
   }
+
+  .images-row {
+    display: flex;
+    gap: 50rem;
+    flex: 2;
+    flex-wrap: nowrap;
+  }
+
+  .image-wrapper {
+    flex: 1 1 50%;
+    max-width: 100vw;
+    margin-left: -30vw; 
+  }
+
+  .image-wrapper img {
+    width: 80%;
+    height: auto;
+    display: block;
+    border-radius: 0;
+    object-fit: cover;
+    margin-top: 70px; /* pushes the image down */
+  }
+
+  @media (max-width: 768px) {
+    .content, .images-row {
+      flex-wrap: wrap;
+    }
+    .image-wrapper {
+      max-width: 100%;
+      flex-basis: 100%;
+      margin-left: 0; /* reset margin on mobile */
+    }
+  }
+
+  /* Animation classes */
+.second-section.hidden {
+  opacity: 0;
+  /* no transform */
+}
+
+.second-section.visible {
+  opacity: 1;
+  /* no transform */
+  transition: opacity 5s ease; /* slower fade */
+}
+
+.second-section {
+  transition: opacity 2s ease;
+}
+
 </style>

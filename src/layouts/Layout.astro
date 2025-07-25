@@ -1,6 +1,5 @@
 ---
-import '../styles/global.css';
-import "../scripts/progress.js";
+import "../styles/global.css";
 const currentPath = Astro.url.pathname;
 ---
 
@@ -10,6 +9,9 @@ const currentPath = Astro.url.pathname;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Web | Aurumz</title>
     <slot name="head" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" />
+
+   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
     <style>
       html {
@@ -29,5 +31,7 @@ const currentPath = Astro.url.pathname;
 
   <body>
     <slot />
+    <!-- Load the progress script globally -->
+    <script type="module" src="/src/scripts/progress.js"></script>
   </body>
 </html>

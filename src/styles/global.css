@@ -126,12 +126,6 @@ html, body {
   position: relative;
 }
 
-.second-section {
-  background: #0e0e0e;
-  color: #465C88;
-  flex-direction: column;
-  text-align: center;
-}
 
 
 
@@ -216,17 +210,32 @@ html, body {
 }
 
 
+
+/* Reset default behavior */
+#nprogress {
+  pointer-events: none;
+}
+
+/* Make the bar vertical on the right */
 #nprogress .bar {
-  background: #465C88 !important; /* Your blue color */
-  height: 3px !important;
+  background: #465C88 !important; /* Color */
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 40px;        /* Thin vertical strip */
+  height: 100vh;     /* Full height */
+  transform-origin: top; /* Scale from top */
 }
+
+/* Remove the default glowing "peg" effect */
 #nprogress .peg {
-  box-shadow: 0 0 10px #465C88, 0 0 5px #465C88 !important;
-}
-#nprogress .spinner {
   display: none !important;
 }
 
+/* Hide spinner */
+#nprogress .spinner {
+  display: none !important;
+}
 
 
 
@@ -297,7 +306,7 @@ html, body {
 .section {
   padding: 4rem 0; /* Top & bottom vertical padding */
   width: 100vw;    /* Make section full viewport width */
-  margin: 0;       /* Remove any margin */
+  margin-top: 8rem;       /* Remove any margin */
   overflow-x: hidden; /* Prevent horizontal scrollbar due to overflow */
 }
 
@@ -339,53 +348,8 @@ html, body {
 
 /* Other sections styling (unchanged) */
 
-.second-section {
-  padding: 8px 4px; /* Increase top and bottom padding from 6rem to 8rem */
-  background: #f5f5f5;
-  min-height: 600px; 
-}
 
-
-.content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  flex-wrap: wrap;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.content.reverse {
-  flex-direction: row-reverse;
-}
-
-.text {
-  flex: 1;
-  min-width: 300px;
-}
-
-.text p {
-  font-size: 1.3rem;
-  line-height: 1.6;
-  color: #333;
-}
-
-
-.image {
-  flex: 1;
-  display: flex;
-  justify-content: center; /* horizontally center */
-  align-items: center;     /* vertically center */
-}
-
-.image img {      /* <-- You can customize this */
-  height: auto;
-  width: auto;
-  object-fit: cover;
-}
-
-
+/* Other sections styling (unchanged) */
 
 
 .animate-fade {

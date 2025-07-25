@@ -14,10 +14,14 @@ import ThirdSection from '../components/ThirdSection.astro';
     <TypingIntro client:load />
 
     <SecondSection
-      id="second-section"
-      image="/assets/Reviewaid.png"
-      reverse={false}
-    />
+  id="second-section"
+  images={[
+    "/assets/lady.jpg",
+    "/assets/Artboa3.png"
+  ]}
+  reverse={false}
+/>
+
 
     <ThirdSection
       id="third-section"
