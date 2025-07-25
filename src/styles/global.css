@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=JetBrains+Mono&display=swap');
+
 
 
 
@@ -44,6 +44,7 @@ html, body {
   font-family: 'JetBrains Mono', monospace;
   margin-bottom: 1rem;
   line-height: 1.1;
+  font-weight: 600;
 }
 
 .subtitle {
@@ -436,3 +437,18 @@ body.lock-scroll {
   font-size: 0.75rem;
   color: #888;
 }
+
+
+
+
+
+.main-title,
+.code-tag,
+.down-arrow,
+b,
+strong {
+  font-weight: 900 !important;
+}
+
+
+

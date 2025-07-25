@@ -8,20 +8,20 @@ import ThirdSection from '../components/ThirdSection.astro';
 <Layout>
   <head slot="head">
     <title>Home | Aurumz</title>
+    <!-- Add Lottie player script here if not added globally -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" defer></script>
   </head>
 
   <div id="root">
     <TypingIntro client:load />
 
     <SecondSection
-  id="second-section"
-  images={[
-    "/assets/lady.jpg",
-    "/assets/Artboa3.png"
-  ]}
-  reverse={false}
-/>
-
+      id="second-section"
+      images={[
+        "/assets/Artboa3.png"
+      ]}
+      reverse={false}
+    />
 
     <ThirdSection
       id="third-section"

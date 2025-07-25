@@ -8,7 +8,7 @@ export interface Props {
 const {
   id = "second-section",
   content = "",
-  images = ["/default-image1.jpg", "/default-image2.jpg"],
+  images = ["/default-image2.jpg"], // pass any number of images here
   reverse = false,
 } = Astro.props;
 ---
@@ -19,9 +19,22 @@ const {
       <p>{content}</p>
     </div>
     <div class="images-row">
-      {images.map((src) => (
-        <div class="image-wrapper">
-          <img src={src} alt="Section image" />
+      {/* Lottie animation always first */}
+      <div class="image-wrapper">
+        <lottie-player
+          src="/lottie/hammy.json"
+          background="transparent"
+          speed="1"
+          style="width: 80%; height: auto; margin-top: 70px;"
+          loop
+          autoplay
+        ></lottie-player>
+      </div>
+
+      {/* Render all images passed in the images array */}
+      {images.map((src, index) => (
+        <div class="image-wrapper" key={index}>
+          <img src={src} alt={`Section image ${index + 1}`} />
         </div>
       ))}
     </div>
@@ -98,13 +111,14 @@ const {
     margin-left: -30vw; 
   }
 
-  .image-wrapper img {
-    width: 80%;
+  .image-wrapper img,
+  .image-wrapper lottie-player {
+    width: 100%;
     height: auto;
     display: block;
     border-radius: 0;
     object-fit: cover;
-    margin-top: 70px; /* pushes the image down */
+    margin-top: 60px; /* pushes image or animation down */
   }
 
   @media (max-width: 768px) {
@@ -119,19 +133,16 @@ const {
   }
 
   /* Animation classes */
-.second-section.hidden {
-  opacity: 0;
-  /* no transform */
-}
+  .second-section.hidden {
+    opacity: 0;
+  }
 
-.second-section.visible {
-  opacity: 1;
-  /* no transform */
-  transition: opacity 5s ease; /* slower fade */
-}
+  .second-section.visible {
+    opacity: 1;
+    transition: opacity 5s ease;
+  }
 
-.second-section {
-  transition: opacity 2s ease;
-}
-
+  .second-section {
+    transition: opacity 2s ease;
+  }
 </style>
