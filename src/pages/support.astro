@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import StaticIntro from '../components/StaticIntro.jsx';
+import BottomPanel from '../components/BottomPanel.jsx';
 ---
 
 <Layout>
@@ -9,4 +10,6 @@ import StaticIntro from '../components/StaticIntro.jsx';
   </head>
 
   <StaticIntro client:load />
+  <BottomPanel client:load />
 </Layout>
+

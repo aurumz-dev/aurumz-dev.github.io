@@ -1,14 +1,32 @@
 ---
 import '../styles/global.css';
+import "../scripts/progress.js";
+const currentPath = Astro.url.pathname;
 ---
 
-<html lang="en">
+<html lang="en" class="lock-scroll">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Web | Aurumz</title>
     <slot name="head" />
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .lock-scroll {
+        overflow: hidden;
+      }
+
+      body {
+        background: #0e0e0e;
+        margin: 0;
+      }
+    </style>
   </head>
+
   <body>
     <slot />
   </body>

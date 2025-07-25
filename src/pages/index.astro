@@ -1,7 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import TypingIntro from '../components/TypingIntro.jsx';
-import MultiSectionPage from '../components/MultiSectionPage.jsx';
+import SecondSection from '../components/SecondSection.astro';
+import ThirdSection from '../components/ThirdSection.astro';
 ---
 
 <Layout>
@@ -9,9 +10,19 @@ import MultiSectionPage from '../components/MultiSectionPage.jsx';
     <title>Home | Aurumz</title>
   </head>
 
-  <!-- Typing intro should load immediately -->
-  <TypingIntro client:load />
+  <div id="root"
+    <TypingIntro client:load />
 
-  <!-- Rest of your multi-section page -->
-  <MultiSectionPage client:load />
+    <SecondSection
+      id="second-section"
+      image="/assets/Reviewaid.png"
+      reverse={false}
+    />
+
+    <ThirdSection
+      id="third-section"
+      heading="Some of My Open Access Projects."
+      subtitle="Click to access their Web!"
+    />
+  </div>
 </Layout>

@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import DevIntro from '../components/DevIntro.jsx';
+import BottomPanel from '../components/BottomPanel.jsx';
 ---
 
 <Layout>
@@ -9,4 +10,10 @@ import DevIntro from '../components/DevIntro.jsx';
   </head>
 
   <DevIntro client:load />
+
+  <section id="third-section" class="section third-section">
+    <h2>Dev Projects</h2>
+  </section>
+
+  <BottomPanel client:load />
 </Layout>

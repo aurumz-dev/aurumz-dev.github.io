@@ -45,7 +45,7 @@ html, body {
   font-size: 2rem;
   font-family: 'JetBrains Mono', sans-serif;
   font-weight: 400;
-  color: #f5a97f;
+  color: #f26c5d;
   letter-spacing: 0.02em;
   word-spacing: 0.1em;
   line-height: 1.5;
@@ -59,10 +59,7 @@ html, body {
   transition: transform 0.6s ease-out, opacity 0.6s ease-out;
 }
 
-.slide-left-blur {
-  transform: translateX(-100px) blur(2px);
-  opacity: 0;
-}
+
 
 /* NAVIGATION PANEL */
 .nav-panel {
@@ -81,24 +78,26 @@ html, body {
   pointer-events: auto;
 }
 
-.nav-link {
-  text-decoration: none;
-  color: #E9E3DF;
-  font-family: Helvetica;
-  font-weight: 500;
-  font-size: 1.25rem;
-  border-bottom: 3px solid transparent;
-  transition: border-color 0.3s;
-}
-
 .nav-link:hover {
   border-color: #465C88;
 }
+
+.nav-link {
+  text-decoration: none;
+  color: #E9E3DF;
+  font-family: 'JetBrains Mono', monospace; 
+  font-weight: 500;
+  font-size: 1.25rem;
+  border-bottom: 3px solid transparent;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
 
 .nav-link.active {
   color: #465C88;
   border-color: #465C88;
 }
+
 
 /* SECTION STYLES */
 .page-container {
@@ -134,64 +133,7 @@ html, body {
   text-align: center;
 }
 
-/* BUTTONS */
-.scroll-button button {
-  background: transparent;
-  border: 2px solid #465C88;
-  color: #E9E3DF;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 1.2rem;
-}
 
-.scroll-button button:hover {
-  background: #465C88;
-  color: #0e0e0e;
-}
-
-/* APP BACKGROUND */
-.app-root {
-  margin: 0;
-  padding: 0;
-  font-family: 'Fira Code', monospace;
-  background-color: #0e0e0e;
-}
-
-/* SCROLL BUTTON */
-.scroll-btn {
-  position: absolute;
-  bottom: 50px;
-  font-size: 2rem;
-  background: transparent;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  animation: bounce 2s infinite;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.5s ease;
-}
-
-.scroll-btn.visible {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.down-arrow {
-  font-size: 2rem;
-  text-align: center;
-  margin-top: 30px;
-  animation: bounce 1.6s infinite;
-  cursor: pointer;
-  color: #ffe8d8;
-  user-select: none;
-  transition: transform 0.2s;
-}
-
-.down-arrow:hover {
-  transform: scale(1.2);
-}
 
 /* SOCIAL LINKS */
 .social-links {
@@ -218,7 +160,7 @@ html, body {
 
 .social-links a:hover svg {
   transform: scale(1.1);
-  stroke: #f5a97f;
+  stroke: #f26c5d;
 }
 
 .ti-cursor {
@@ -228,4 +170,300 @@ html, body {
   color: transparent !important;
   display: inline-block !important;
   vertical-align: bottom !important;
+}
+
+.down-arrow {
+  position: fixed;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3rem;
+  color: #fff9f47f;
+  cursor: pointer;
+  animation: bounce 1.6s infinite;
+  user-select: none;
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.5s ease, font-weight 0.7s ease;
+  z-index: 100;
+  font-weight: 300; /* Thin font weight */
+}
+
+.down-arrow.hidden-scroll {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.down-arrow:hover {
+  transform: translateX(-50%) scale(1.2);
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-15px);
+  }
+}
+
+
+/* Fade & slide out for code-tag text */
+.slide-left-blur {
+  transform: translateX(-100px) blur(2px);
+  opacity: 0;
+  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+}
+
+
+#nprogress .bar {
+  background: #465C88 !important; /* Your blue color */
+  height: 3px !important;
+}
+#nprogress .peg {
+  box-shadow: 0 0 10px #465C88, 0 0 5px #465C88 !important;
+}
+#nprogress .spinner {
+  display: none !important;
+}
+
+
+
+
+
+
+
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1.5rem;
+
+  width: 100vw;              /* Make container full viewport width */
+  max-width: 100vw;          /* Prevent max-width constraints */
+  position: relative;        /* Allows left/right positioning */
+  left: 50%;                 /* Move container right by 50% of viewport */
+  right: 50%;                /* Move container left by 50% of viewport */
+  margin-left: -50vw;        /* Pull container left by 50% viewport width (undo shift) */
+  margin-right: -50vw;       /* Pull container right by 50% viewport width */
+  padding: 0 0.8rem;         /* Add horizontal padding of 0.8rem (left and right) */
+  padding-left: 5rem;        /* Override left padding to be larger: 5rem */
+  padding-right: 5rem;       /* Override right padding to be larger: 5rem */
+}
+
+
+.project-card {
+  padding: 1.2rem 1.8rem;    /* Inner spacing top/bottom: 1.2rem, left/right: 1.8rem */
+  border-radius: 12px;       /* Rounded corners */
+  min-height: 190px;         /* Minimum height to keep cards visually consistent */
+  width: 100%;               /* Make card fill the full width of its grid cell */
+  text-decoration: none;     /* Remove underline from link */
+  color: #222;               /* Dark gray text color */
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12); /* Subtle shadow for slight depth */
+  background-color: var(--backgroundColor, #fff); /* Use CSS variable or white fallback */
+  display: flex;             /* Flexbox layout inside card */
+  flex-direction: column;    /* Arrange children vertically */
+  justify-content: space-between; /* Space between elements for balanced layout */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transitions */
+  font-size: 1.1rem;        /* Smaller text inside cards */
+}
+
+.project-card:hover {
+  transform: translateY(-5px); /* Slight lift on hover for interactivity */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Stronger shadow for emphasis */
+}
+
+
+.project-tags {
+  margin-top: 0.4rem;       /* Space above tags container */
+  display: flex;            /* Flexbox for tags row */
+  flex-wrap: wrap;          /* Allow tags to wrap to next line if needed */
+  gap: 0.7rem;              /* Gap between individual tags */
+}
+
+.tag {
+  background: rgba(0, 0, 0, 0.05); /* Light transparent gray background */
+  padding: 0.18rem 0.4rem;         /* Small padding inside tags */
+  border-radius: 4px;              /* Rounded corners */
+  font-size: 0.9rem;              /* Smaller text for tags */
+  white-space: nowrap;             /* Prevent tags from breaking into multiple lines */
+}
+
+
+
+ /* third Section */
+
+.section {
+  padding: 4rem 0; /* Top & bottom vertical padding */
+  width: 100vw;    /* Make section full viewport width */
+  margin: 0;       /* Remove any margin */
+  overflow-x: hidden; /* Prevent horizontal scrollbar due to overflow */
+}
+
+.full-width-wrapper {
+  width: 100vw;   /* Full viewport width */
+  max-width: 100vw; 
+  margin: 0;
+  padding: 0;     /* No padding inside wrapper */
+}
+
+.title-subtitle-row {
+  padding-left: 0; /* Remove left padding */
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.projects-wrapper {
+  margin-top: 1.5rem;  /* Space above project list */
+  width: 100vw;      /* Full viewport width */
+  padding: 0;        /* No internal padding */
+}
+
+
+/* Increase height of third section */
+.section.third-section {
+  height: auto; /* Minimum height (adjustable) */
+  /* You can add 'height: 600px;' for fixed height */
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Other sections styling (unchanged) */
+
+.second-section {
+  padding: 8px 4px; /* Increase top and bottom padding from 6rem to 8rem */
+  background: #f5f5f5;
+  min-height: 600px; 
+}
+
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.content.reverse {
+  flex-direction: row-reverse;
+}
+
+.text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.text p {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+
+.image {
+  flex: 1;
+  display: flex;
+  justify-content: center; /* horizontally center */
+  align-items: center;     /* vertically center */
+}
+
+.image img {      /* <-- You can customize this */
+  height: auto;
+  width: auto;
+  object-fit: cover;
+}
+
+
+
+
+.animate-fade {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+
+
+html.lock-scroll,
+body.lock-scroll {
+  overflow: hidden;
+  height: 100%;
+}
+
+
+
+
+
+
+/* Bottom Panel */
+.bottom-panel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;   /* Push content toward top */
+  padding: 1rem 1rem 1rem;     /* Less vertical padding */
+  background-color: #0e0e0e;
+  color: #ccc;
+  font-size: 0.85rem;
+  border-top: 0.5px solid #222;
+  user-select: none;
+  z-index: 9999;
+  opacity: 0.91;
+  box-sizing: border-box;   
+  height: 57px;         /* Reduced height */
+}
+
+.left-side,
+.right-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0px;
+  line-height: 1.1;          /* Tighter line spacing */
+  margin-top: 1px;           /* Move slightly up */
+}
+
+.right-side {
+  align-items: flex-end;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.left-side .version {
+  font-weight: 400;
+  font-size:0.8rem;
+}
+
+.left-side a.github-link {
+  color: #465C88;
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.3s ease;
+  font-size:0.8rem;
+}
+
+.left-side a.github-link:hover,
+.left-side a.github-link:focus {
+  color: #465C88;
+  text-decoration: underline;
+  font-size: 0.9rem;
+}
+
+.right-side .last-update {
+  font-size: 0.75rem;
+  color: #888;
 }

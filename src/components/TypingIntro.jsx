@@ -7,19 +7,26 @@ export default function TypingIntro({ onTypingComplete }) {
   const subtitleRef = useRef(null);
   const wrapperRef = useRef(null);
   const [currentPath, setCurrentPath] = useState('/');
-  const [showSocials, setShowSocials] = useState(false);
+  const [showExtras, setShowExtras] = useState(false); // nav, socials, arrow
+  const [showBottomPanel, setShowBottomPanel] = useState(false); // separate for bottom panel
+  const [arrowVisible, setArrowVisible] = useState(true);
   const typingStarted = useRef(false);
+
+  // Always update path so nav stays highlighted correctly
+  useEffect(() => {
+    const updatePath = () => setCurrentPath(window.location.pathname);
+    updatePath();
+    window.addEventListener('popstate', updatePath);
+    return () => window.removeEventListener('popstate', updatePath);
+  }, []);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-
-    setCurrentPath(window.location.pathname);
     if (typingStarted.current) return;
     typingStarted.current = true;
 
-    // Delay to ensure DOM is ready on GH Pages
     const timeout = setTimeout(() => {
-      if (!titleRef.current || !subtitleRef.current) return; // Safety check
+      if (!titleRef.current || !subtitleRef.current) return;
 
       async function runTyping() {
         await new TypeIt(titleRef.current, {
@@ -54,13 +61,18 @@ export default function TypingIntro({ onTypingComplete }) {
                   setTimeout(() => {
                     navPanel.classList.add('active');
                     if (currentPath === '/') {
-                      setShowSocials(true);
+                      setShowExtras(true); // show nav, socials, arrow here
+                      setTimeout(() => setShowBottomPanel(true), 300); // delay bottom panel show a bit
                     }
                   }, 50);
                 }
 
                 const subCursor = subtitleRef.current.querySelector('.ti-cursor');
                 if (subCursor) subCursor.remove();
+
+                if (typeof document !== 'undefined') {
+                  document.documentElement.classList.remove('lock-scroll');
+                }
 
                 if (onTypingComplete) onTypingComplete();
               }
@@ -80,29 +92,134 @@ export default function TypingIntro({ onTypingComplete }) {
       }
 
       runTyping();
-    }, 50); // Delay to ensure hydration
+    }, 50);
 
     return () => clearTimeout(timeout);
   }, []);
 
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    if (!showExtras) return;
+
+    const handleScroll = () => {
+      const scrollY = window.scrollY || window.pageYOffset;
+      setArrowVisible(scrollY < 100);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [showExtras]);
+
+  const scrollToProjects = () => {
+    const section = document.querySelector('.second-section');
+    if (section) section.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <div className="aspect-ratio-container relative">
-      <div className="typing-wrapper centered" ref={wrapperRef}>
-        <h1 className="main-title" ref={titleRef}></h1>
-        <p className="subtitle" ref={subtitleRef}></p>
+    <>
+      <div className="aspect-ratio-container relative">
+        <div className="typing-wrapper centered" ref={wrapperRef}>
+          <h1 className="main-title" ref={titleRef}></h1>
+          <p className="subtitle" ref={subtitleRef}></p>
+        </div>
+
+        <nav className="nav-panel hidden" id="nav-panel">
+          <a href="/" className={`nav-link ${currentPath === '/' ? 'active' : ''}`}>Main Page</a>
+          <a href="/support" className={`nav-link ${currentPath === '/support' ? 'active' : ''}`}>Support</a>
+          <a href="/dev" className={`nav-link ${currentPath === '/dev' ? 'active' : ''}`}>Dev</a>
+        </nav>
+
+        {currentPath === '/' && showExtras && (
+          <>
+            <div className="socials-container-inside-section">
+              <SocialLinks />
+            </div>
+
+            <div
+              className={`down-arrow visible ${arrowVisible ? '' : 'hidden-scroll'}`}
+              onClick={scrollToProjects}
+              role="button"
+              tabIndex={0}
+              aria-label="Scroll down to projects"
+              onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') scrollToProjects(); }}
+            >
+              ↓
+            </div>
+          </>
+        )}
       </div>
 
-      <nav className="nav-panel hidden" id="nav-panel">
-        <a href="/" className={`nav-link ${currentPath === '/' ? 'active' : ''}`}>Main Page</a>
-        <a href="/support" className={`nav-link ${currentPath === '/support' ? 'active' : ''}`}>Support</a>
-        <a href="/dev" className={`nav-link ${currentPath === '/dev' ? 'active' : ''}`}>Dev</a>
-      </nav>
-
-      {currentPath === '/' && showSocials && (
-        <div className="socials-container-inside-section">
-          <SocialLinks />
-        </div>
+      {currentPath === '/' && showBottomPanel && (
+        <footer className="bottom-panel">
+          <div className="left-side">
+            <span className="version">Version 1.0.1</span>
+            <a
+              href="https://github.com/aurumz-dev/aurumz-dev.github.io"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="github-link"
+            >
+              GitHub Source Code
+            </a>
+          </div>
+          <div className="right-side">
+            Made with &lt;3 by Aurumz
+            <span className="last-update">Last Update: 2025-07-24</span>
+          </div>
+        </footer>
       )}
-    </div>
+
+      <style>{`
+        .bottom-panel {
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          background-color: #0e0e0e;
+          color: #ccc;
+          display: flex;
+          justify-content: space-between;
+          padding: 1rem 2rem;
+          font-size: 0.9rem;
+          border-top: 1px solid #222;
+          user-select: none;
+          z-index: 9999;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+        }
+        .bottom-panel .left-side {
+          display: flex;
+          flex-direction: column;
+          gap: 0.3rem;
+        }
+        .bottom-panel .right-side {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          gap: 0.2rem;
+          font-weight: 500;
+          white-space: nowrap;
+        }
+        .bottom-panel .github-link {
+          color: #4098ff;
+          text-decoration: none;
+          font-weight: 600;
+          transition: color 0.3s ease;
+          margin-top: 0.2rem;
+        }
+        .bottom-panel .github-link:hover,
+        .bottom-panel .github-link:focus {
+          color: #1a5fcc;
+          text-decoration: underline;
+        }
+        .bottom-panel .version {
+          font-weight: 600;
+        }
+        .bottom-panel .last-update {
+          font-size: 0.8rem;
+          color: #777;
+        }
+      `}</style>
+    </>
   );
 }

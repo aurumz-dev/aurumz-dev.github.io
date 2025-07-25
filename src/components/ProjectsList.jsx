@@ -1,35 +1,24 @@
-import ProjectCard from './ProjectCard.jsx';
-
-const projectsData = [
-  {
-    name: "Open-Access Library",
-    website: "https://openaccess.example",
-    github: "https://github.com/yourrepo/open-access",
-    description: "An open-access platform for sharing scientific research papers with zero paywall.",
-    
-  },
-  {
-    name: "Code Animator",
-    website: "https://codeanimator.example",
-    github: "https://github.com/yourrepo/code-animator",
-    description: "A tool to animate code snippets for tutorials and presentations.",
-    
-  },
-];
+import ProjectCard from './ProjectCard';
 
 export default function ProjectsList() {
+  const projects = [
+    {
+      name: "ReviewAid",
+      link: "",
+      description: "An advanced AI-powered tool that rapidly screens and extracts full-text data from multiple research articles, determining inclusion or exclusion based on your research criteria — all in just seconds. Github Source: ",
+      tags: ["Full-text Screener", "Extractor", "Ai"],
+      backgroundColor: "#0786cfff", 
+    },
+
+  ];
+
   return (
-    <div className="projects-list">
-      {projectsData.map((proj, i) => (
-        <ProjectCard 
-          key={i}
-          name={proj.name}
-          website={proj.website}
-          github={proj.github}
-          description={proj.description}
-          image={proj.image}
-        />
-      ))}
-    </div>
+    <section className="projects-section">
+      <div className="projects-grid">
+        {projects.map(project => (
+          <ProjectCard key={project.name} {...project} />
+        ))}
+      </div>
+    </section>
   );
 }

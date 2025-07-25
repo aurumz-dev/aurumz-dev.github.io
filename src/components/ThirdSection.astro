@@ -1,0 +1,150 @@
+---
+import ProjectsList from '../components/ProjectsList.jsx';
+
+const {
+  id = "third-section",
+  heading = "Some of My Open Access Projects",
+  subtitle = "Click to access their web!",
+  description = "In case of Errors, Please reach out Anytime OR Create an Issue on Github! ",
+} = Astro.props;
+---
+
+<section class="section third-section" id={id}>
+  <div class="animate-fade full-width-wrapper" id="third-section-content">
+    <div class="text-area">
+      <div class="title-group">
+        <h1 class="heading">{heading}</h1>
+        <div class="subtitle">{subtitle}</div>
+      </div>
+      {description && <p class="description">{description}</p>}
+    </div>
+
+    <div class="projects-wrapper">
+      <ProjectsList client:load />
+    </div>
+  </div>
+
+  <footer class="bottom-panel hidden" id="bottom-panel">
+    <div class="left-side">
+      <span class="version">Version 1.0.1</span>
+      <a
+        href="https://github.com/aurumz-dev/aurumz-dev.github.io"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="github-link"
+      >
+        GitHub Source Code
+      </a>
+    </div>
+    <div class="right-side">
+      <div>Made with &lt;3 by Aurumz</div>
+      <div class="last-update">Last Update: 2025-07-24</div>
+    </div>
+  </footer>
+</section>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const bottomPanel = document.getElementById("bottom-panel");
+
+    const interval = setInterval(() => {
+      const typingEnded = document.querySelector(".nav-upper")?.classList.contains("visible");
+
+      if (typingEnded) {
+        bottomPanel.classList.remove("hidden");
+        bottomPanel.classList.add("fade-in");
+        clearInterval(interval);
+      }
+    }, 300);
+  });
+</script>
+
+<style>
+  .hidden {
+  display: none;
+}
+
+
+/* Add padding below the whole section */
+section#third-section {
+  padding-bottom: 30rem;
+}
+
+
+
+
+
+.fade-in {
+  display: flex;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.bottom-panel {
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem; /* Smaller padding */
+  background-color: #111;
+  color: #ccc;
+  opacity: 0.5;
+  font-size: 0.75rem; /* Smaller font */
+  border-top: 1px solid #333;
+  margin-top: 2rem; /* Less spacing above */
+  flex-wrap: wrap;
+  height: 20px; /* Optional: constrain height */
+}
+
+.bottom-panel .left-side,
+.bottom-panel .right-side {
+  display: flex;
+  gap: 0.1rem;
+  flex-wrap: wrap;
+}
+
+
+  /* Text layout */
+  .text-area {
+    margin-bottom: 2.5rem;
+    margin-left: 4.5rem;
+  }
+
+  .title-group {
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+  }
+
+  .heading {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: #bab4b0ff;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    font-size: 2rem;
+    color: #465C88;
+    margin-left: 0.2rem;
+  }
+
+  .description {
+    font-size: 1.5rem;
+    color: #465C88;
+    margin-top: 0.5rem;
+    margin-left: 1.5rem;
+  }
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+
+
+
+
