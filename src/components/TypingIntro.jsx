@@ -42,7 +42,7 @@ export default function TypingIntro({ onTypingComplete }) {
             if (!subtitleRef.current) return;
 
             await new TypeIt(subtitleRef.current, {
-              speed: 10,
+              speed: 20,
               waitUntilVisible: true,
               cursor: true,
               afterComplete: async () => {
@@ -218,6 +218,119 @@ export default function TypingIntro({ onTypingComplete }) {
         .bottom-panel .last-update {
           font-size: 0.8rem;
           color: #777;
+        }
+
+        /* =============================== */
+        /* RESPONSIVE ADJUSTMENTS START HERE */
+        /* =============================== */
+
+        /* Very large screens (4K and bigger) */
+        @media (min-width: 1920px) {
+          .typing-wrapper.centered {
+            max-width: 900px;
+            padding: 0 2rem;
+          }
+          .bottom-panel {
+            padding: 1rem 4rem;
+            font-size: 1rem;
+          }
+          .down-arrow {
+            font-size: 4rem;
+            margin-top: 2rem;
+          }
+        }
+
+        /* Large desktops (1200px - 1919px) */
+        @media (min-width: 1200px) and (max-width: 1919px) {
+          .typing-wrapper.centered {
+            max-width: 800px;
+            padding: 0 1.5rem;
+          }
+          .bottom-panel {
+            padding: 1rem 3rem;
+            font-size: 0.95rem;
+          }
+          .down-arrow {
+            font-size: 3.5rem;
+            margin-top: 1.5rem;
+          }
+        }
+
+        /* Medium desktops / laptops (992px - 1199px) */
+        @media (min-width: 992px) and (max-width: 1199px) {
+          .typing-wrapper.centered {
+            max-width: 750px;
+            padding: 0 1rem;
+          }
+          .bottom-panel {
+            padding: 1rem 2rem;
+            font-size: 0.9rem;
+          }
+          .down-arrow {
+            font-size: 3rem;
+            margin-top: 1rem;
+          }
+        }
+
+        /* Tablets (768px - 991px) */
+        @media (min-width: 768px) and (max-width: 991px) {
+          .typing-wrapper.centered {
+            max-width: 95%;
+            padding: 0 1rem;
+          }
+          .bottom-panel {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1rem 1.5rem;
+            font-size: 0.9rem;
+          }
+          .bottom-panel .right-side {
+            align-items: center;
+            white-space: normal;
+          }
+          .down-arrow {
+            font-size: 3.5rem;
+            margin-top: 1.5rem;
+          }
+        }
+
+        /* Mobile phones (up to 767px) */
+        @media (max-width: 767px) {
+          .typing-wrapper.centered {
+            max-width: 100%;
+            padding: 0 1rem;
+          }
+          .bottom-panel {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1rem 1rem;
+            font-size: 0.85rem;
+          }
+          .bottom-panel .right-side {
+            align-items: center;
+            white-space: normal;
+          }
+          .down-arrow {
+            font-size: 4rem;
+            margin-top: 2rem;
+          }
+        }
+
+        /* Extra small devices (up to 480px) */
+        @media (max-width: 480px) {
+          .typing-wrapper.centered {
+            padding: 0 0.5rem;
+          }
+          .bottom-panel {
+            padding: 0.75rem 0.5rem;
+            font-size: 0.8rem;
+          }
+          .down-arrow {
+            font-size: 3rem;
+            margin-top: 1rem;
+          }
         }
       `}</style>
     </>

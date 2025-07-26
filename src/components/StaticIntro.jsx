@@ -15,7 +15,7 @@ export default function StaticIntro() {
         renderer: 'svg',
         loop: true,
         autoplay: true,
-        path: '/lottie/Tamashi.json', // make sure this path is correct
+        path: '/lottie/Tamashi.json',
       });
     }
   }, []);
@@ -29,22 +29,28 @@ export default function StaticIntro() {
           alignItems: 'center',
           gap: '2rem',
           flexWrap: 'wrap',
+          justifyContent: 'center', // center for small screens
+          textAlign: 'left',
         }}
       >
         {/* Lottie sticker on the left */}
         <div
           ref={lottieContainer}
           style={{
-            width: '450px',
-            height: '450px',
+            width: 'min(90vw, 450px)',
+            height: 'min(90vw, 450px)',
             flexShrink: 0,
-    
           }}
         ></div>
 
         {/* Text content */}
-        <div>
-          <h1 className="main-title" style={{ fontSize: '3rem' }}>
+        <div style={{ maxWidth: '700px', padding: '1rem' }}>
+          <h1
+            className="main-title"
+            style={{
+              fontSize: 'clamp(1.8rem, 4vw, 3rem)',
+            }}
+          >
             Support corner.
           </h1>
           <p
@@ -52,8 +58,7 @@ export default function StaticIntro() {
             style={{
               color: '#ccc',
               lineHeight: '1.75',
-              fontSize: '1.5rem',
-              maxWidth: '700px',
+              fontSize: 'clamp(1rem, 2.5vw, 1.5rem)',
             }}
           >
             Projects built during my personal time and made available as open-access.<br />

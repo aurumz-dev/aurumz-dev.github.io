@@ -7,18 +7,24 @@
 
 html, body {
   width: 100%;
-  min-height: 100%; /* CHANGED: height → min-height */
-  font-family: 'Fira Code', monospace;
-  background: #465C88;
-  color: #465C88;
+  height: 100%; /* changed from min-height to height for full viewport */
+  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+  background: #0e0e0e;
+  color: #E9E3DF; /* updated to your preferred text color */
   overflow-x: visible;  /* Change this from hidden to visible */
   scroll-behavior: smooth;
+}
+
+/* Apply font family and color globally to form elements */
+body, input, textarea, button, select {
+  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+  color: #E9E3DF;
 }
 
 /* FULLSCREEN CONTAINER */
 .aspect-ratio-container {
   width: 100%;
-  height: 100vh; /* Use 100% to ensure responsive sizing */
+  height: 100vh; /* full viewport height */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,9 +39,14 @@ html, body {
   padding-left: 8rem;
 }
 
+
+
+
+
+
 .main-title {
   color: #E9E3DF;
-  font-size: 3rem; /* Ensure this fits with screen sizes */
+  font-size: 3rem;
   font-family: 'JetBrains Mono', monospace;
   margin-bottom: 1rem;
   line-height: 1.1;
@@ -84,7 +95,7 @@ html, body {
 .nav-link {
   text-decoration: none;
   color: #E9E3DF;
-  font-family: 'JetBrains Mono', monospace; 
+  font-family: 'JetBrains Mono', monospace;
   font-weight: 500;
   font-size: 1.25rem;
   border-bottom: 3px solid transparent;
@@ -174,7 +185,7 @@ html, body {
   pointer-events: auto;
   transition: opacity 0.5s ease, font-weight 0.7s ease;
   z-index: 100;
-  font-weight: 300; /* Thin font weight */
+  font-weight: 300;
 }
 
 .down-arrow.hidden-scroll {
@@ -209,13 +220,13 @@ html, body {
 
 /* Make the bar vertical on the right */
 #nprogress .bar {
-  background: #465C88 !important; /* Color */
+  background: #465C88 !important;
   position: fixed;
   top: 0;
   right: 0;
-  width: 40px;        /* Thin vertical strip */
-  height: 100vh;     /* Full height */
-  transform-origin: top; /* Scale from top */
+  width: 40px;
+  height: 100vh;
+  transform-origin: top;
 }
 
 /* Remove the default glowing "peg" effect */
@@ -228,93 +239,94 @@ html, body {
   display: none !important;
 }
 
+/* Projects grid */
 .projects-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
   margin-top: 1.5rem;
 
-  width: 100vw;              /* Make container full viewport width */
-  max-width: 100vw;          /* Prevent max-width constraints */
-  position: relative;        /* Allows left/right positioning */
-  left: 50%;                 /* Move container right by 50% of viewport */
-  right: 50%;                /* Move container left by 50% of viewport */
-  margin-left: -50vw;        /* Pull container left by 50% viewport width (undo shift) */
-  margin-right: -50vw;       /* Pull container right by 50% viewport width */
-  padding: 0 0.8rem;         /* Add horizontal padding of 0.8rem (left and right) */
-  padding-left: 5rem;        /* Override left padding to be larger: 5rem */
-  padding-right: 5rem;       /* Override right padding to be larger: 5rem */
+  width: 100vw;
+  max-width: 100vw;
+  position: relative;
+
+  /* Center container on viewport with equal padding on sides */
+  padding-left: 0;
+  padding-right: 5rem;
+  margin-left:0;
+  box-sizing: border-box;
 }
 
+/* Project card styles */
 .project-card {
-  padding: 1.2rem 1.8rem;    /* Inner spacing top/bottom: 1.2rem, left/right: 1.8rem */
-  border-radius: 12px;       /* Rounded corners */
-  min-height: 190px;         /* Minimum height to keep cards visually consistent */
-  width: 100%;               /* Make card fill the full width of its grid cell */
-  text-decoration: none;     /* Remove underline from link */
-  color: #222;               /* Dark gray text color */
-  box-shadow: 0 2px 12px rgba(0,0,0,0.12); /* Subtle shadow for slight depth */
-  background-color: var(--backgroundColor, #fff); /* Use CSS variable or white fallback */
-  display: flex;             /* Flexbox layout inside card */
-  flex-direction: column;    /* Arrange children vertically */
-  justify-content: space-between; /* Space between elements for balanced layout */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transitions */
-  font-size: 1.1rem;        /* Smaller text inside cards */
+  padding: 1.2rem 1.8rem;
+  border-radius: 12px;
+  min-height: 190px;
+  width: 100%;
+  text-decoration: none;
+  color: #222;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  background-color: var(--backgroundColor, #fff);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1.1rem;
 }
 
 .project-card:hover {
-  transform: translateY(-5px); /* Slight lift on hover for interactivity */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Stronger shadow for emphasis */
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .project-tags {
-  margin-top: 0.4rem;       /* Space above tags container */
-  display: flex;            /* Flexbox for tags row */
-  flex-wrap: wrap;          /* Allow tags to wrap to next line if needed */
-  gap: 0.7rem;              /* Gap between individual tags */
+  margin-top: 0.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
 }
 
 .tag {
-  background: rgba(0, 0, 0, 0.05); /* Light transparent gray background */
-  padding: 0.18rem 0.4rem;         /* Small padding inside tags */
-  border-radius: 4px;              /* Rounded corners */
-  font-size: 0.9rem;              /* Smaller text for tags */
-  white-space: nowrap;             /* Prevent tags from breaking into multiple lines */
+  background: rgba(0, 0, 0, 0.05);
+  padding: 0.18rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  white-space: nowrap;
 }
 
-/* third Section */
-
+/* Third Section */
 .section {
-  padding: 4rem 0; /* Top & bottom vertical padding */
-  width: 100vw;    /* Make section full viewport width */
-  margin-top: 8rem;       /* Remove any margin */
-  overflow-x: hidden; /* Prevent horizontal scrollbar due to overflow */
+  padding: 4rem 0;
+  width: 100vw;
+  margin-top: 8rem;
+  overflow-x: hidden;
 }
 
 .full-width-wrapper {
-  width: 100vw;   /* Full viewport width */
-  max-width: 100vw; 
+  width: 100vw;
+  max-width: 100vw;
   margin: 0;
-  padding: 0;     /* No padding inside wrapper */
+  padding: 0;
 }
 
 .title-subtitle-row {
-  padding-left: 0; /* Remove left padding */
+  padding-left: 0;
   margin-left: 0;
   margin-right: 0;
 }
 
 .projects-wrapper {
-  margin-top: 1.5rem;  /* Space above project list */
-  width: 100vw;      /* Full viewport width */
-  padding: 0;        /* No internal padding */
+  margin-top: 1.5rem;
+  width: 100vw;
+  padding: 0;
 }
 
-/* Increase height of third section */
 .section.third-section {
-  height: auto; /* Minimum height (adjustable) */
-  /* You can add 'height: 600px;' for fixed height */
+  height: auto;
+  background-color: #0e0e0e;
+  
 }
+
 
 /* Other sections styling (unchanged) */
 
@@ -337,17 +349,17 @@ body.lock-scroll {
   right: 0;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;   /* Push content toward top */
-  padding: 1rem 1rem 1rem;     /* Less vertical padding */
-  background-color: #0e0e0e;
+  align-items: flex-start;
+  padding: 1rem 1rem 1rem;
+  background-color: #0e0e0e98;
   color: #ccc;
   font-size: 0.85rem;
   border-top: 0.5px solid #222;
   user-select: none;
   z-index: 9999;
   opacity: 0.91;
-  box-sizing: border-box;   
-  height: 57px;         /* Reduced height */
+  box-sizing: border-box;
+  height: 57px;
 }
 
 .left-side,
@@ -355,26 +367,24 @@ body.lock-scroll {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 0px;
-  line-height: 1.1;          /* Tighter line spacing */
-  margin-top: 1px;           /* Move slightly up */
+  gap: 0;
+  line-height: 1.1;
+  margin-top: 1px;
 }
 
 .right-side {
   align-items: flex-end;
   font-weight: 500;
   white-space: nowrap;
-  font-size:1rem;
+  font-size: 1rem;
 }
-
-
 
 .left-side a.github-link {
   color: #465C88;
   text-decoration: none;
   font-weight: 400;
   transition: color 0.3s ease;
-  font-size:1.1rem;
+  font-size: 1.1rem;
 }
 
 .left-side a.github-link:hover,
@@ -442,7 +452,8 @@ strong {
     text-align: center;
   }
   .projects-grid {
-    padding: 0 1rem;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
   }
 }
 

@@ -13,7 +13,8 @@ export default function DevIntro() {
     {
       name: "ReviewAid [Dev]",
       link: "https://review-aid-private.onrender.com",
-      description: "An advanced AI-powered tool that rapidly screens and extracts full-text data from multiple research articles, determining inclusion or exclusion based on your research criteria — all in just seconds. Github Source: github.com/aurumz-dev/Review_Aid_private",
+      description:
+        "An advanced AI-powered tool that rapidly screens and extracts full-text data from multiple research articles, determining inclusion or exclusion based on your research criteria — all in just seconds. Github Source: github.com/aurumz-dev/Review_Aid_private",
       backgroundColor: "#0087d57b",
     },
   ];
@@ -22,25 +23,43 @@ export default function DevIntro() {
     <div className="aspect-ratio-container">
       <div
         className="typing-wrapper shift-left"
-        style={{ textAlign: 'left', maxWidth: '950px', marginLeft: '-10rem' }}
+        style={{
+          textAlign: 'left',
+          maxWidth: 'min(95vw, 950px)',
+          marginInline: 'auto',
+          padding: '1rem',
+        }}
       >
-        <h1 className="main-title">Welcome to the Dev Page.</h1>
+        <h1
+          className="main-title"
+          style={{
+            fontSize: 'clamp(2rem, 4vw, 3rem)',
+          }}
+        >
+          Welcome to the Dev Page.
+        </h1>
         <p
           className="subtitle"
-          style={{ color: '#ccc', lineHeight: '1.5', fontSize: '1.3rem' }}
+          style={{
+            color: '#ccc',
+            lineHeight: '1.5',
+            fontSize: 'clamp(1rem, 2.5vw, 1.3rem)',
+          }}
         >
           This is the Developer&apos;s corner. <br />
           Here I share my private projects, beta-test Versions of My Projects.
-          
-        
         </p>
       </div>
 
       {/* Dev Projects List */}
-      <section id="third-section" style={{ maxWidth: '900px', margin: '2rem auto' }}>
-        <h2 style={{ color: '#f38ba8', marginBottom: '1.5rem', textAlign: 'center' }}>
-          
-        </h2>
+      <section
+        id="third-section"
+        style={{
+          maxWidth: 'min(95vw, 900px)',
+          margin: '2rem auto',
+          padding: '0 1rem',
+        }}
+      >
         <div
           style={{
             display: 'grid',
@@ -60,13 +79,27 @@ export default function DevIntro() {
                 color: 'white',
                 transition: 'transform 0.3s ease',
               }}
-              onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-6px)'}
-              onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.transform = 'translateY(-6px)')
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.transform = 'translateY(0)')
+              }
             >
-              <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>
+              <h3
+                style={{
+                  fontSize: 'clamp(1.2rem, 2.5vw, 1.5rem)',
+                  marginBottom: '0.5rem',
+                }}
+              >
                 {project.name}
               </h3>
-              <p style={{ fontSize: '1rem', marginBottom: '1rem' }}>
+              <p
+                style={{
+                  fontSize: 'clamp(0.9rem, 2vw, 1rem)',
+                  marginBottom: '1rem',
+                }}
+              >
                 {project.description}
               </p>
               <a
@@ -77,10 +110,9 @@ export default function DevIntro() {
                   color: 'white',
                   fontWeight: 'bold',
                   textDecoration: 'none',
-                  
                 }}
               >
-                Visit 
+                Visit
               </a>
             </div>
           ))}
@@ -88,16 +120,24 @@ export default function DevIntro() {
       </section>
 
       <nav className="nav-panel active" id="nav-panel">
-        <a href="/" className={`nav-link ${currentPath === '/' ? 'active' : ''}`}>
+        <a
+          href="/"
+          className={`nav-link ${currentPath === '/' ? 'active' : ''}`}
+        >
           Main Page
         </a>
         <a
           href="/support"
-          className={`nav-link ${currentPath === '/support' ? 'active' : ''}`}
+          className={`nav-link ${
+            currentPath === '/support' ? 'active' : ''
+          }`}
         >
           Support
         </a>
-        <a href="/dev" className={`nav-link ${currentPath === '/dev' ? 'active' : ''}`}>
+        <a
+          href="/dev"
+          className={`nav-link ${currentPath === '/dev' ? 'active' : ''}`}
+        >
           Dev
         </a>
       </nav>

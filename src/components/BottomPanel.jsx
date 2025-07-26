@@ -68,6 +68,18 @@ export default function BottomPanel() {
             font-size: 0.8rem;
             color: #777;
           }
+
+          @media (max-width: 600px) {
+            .bottom-panel {
+              flex-direction: column;
+              align-items: center;
+              text-align: center;
+            }
+            .bottom-panel .right-side {
+              align-items: center;
+              white-space: normal;
+            }
+          }
         `}</style>
       </footer>
     </>

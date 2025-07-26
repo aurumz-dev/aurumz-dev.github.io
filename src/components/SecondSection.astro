@@ -8,7 +8,7 @@ export interface Props {
 const {
   id = "second-section",
   content = "",
-  images = ["/default-image2.jpg"], // pass any number of images here
+  images = ["/default-image2.jpg"],
   reverse = false,
 } = Astro.props;
 ---
@@ -19,10 +19,9 @@ const {
       <p>{content}</p>
     </div>
     <div class="images-row">
-      {/* Lottie animation always first */}
       <div class="image-wrapper">
         <lottie-player
-          src="/lottie/hammy.json"
+          src="/lottie/goldhammy.json"
           background="transparent"
           speed="1"
           style="width: 80%; height: auto; margin-top: 70px;"
@@ -31,7 +30,6 @@ const {
         ></lottie-player>
       </div>
 
-      {/* Render all images passed in the images array */}
       {images.map((src, index) => (
         <div class="image-wrapper" key={index}>
           <img src={src} alt={`Section image ${index + 1}`} />
@@ -62,12 +60,12 @@ const {
 
 <style>
   .second-section {
-    padding: 0 0; /* vertical padding only, no horizontal */
+    padding: 0;
     background: #0e0e0e;
     height: 380px;
     width: 100vw;
     box-sizing: border-box;
-    border-top: 2px solid #ffffff0d;   /* top line */
+    border-top: 2px solid #ffffff0d;
     border-bottom: 2px solid #ffffff0d;
     transition: opacity 1s ease, transform 1s ease;
   }
@@ -80,7 +78,7 @@ const {
     flex-wrap: nowrap;
     max-width: 40vw;
     margin: 0 auto;
-    padding: 10 1rem; /* slight padding inside to prevent edge overflow */
+    padding: 10 1rem;
   }
 
   .content.reverse {
@@ -108,7 +106,7 @@ const {
   .image-wrapper {
     flex: 1 1 50%;
     max-width: 100vw;
-    margin-left: -30vw; 
+    margin-left: -30vw;
   }
 
   .image-wrapper img,
@@ -118,17 +116,77 @@ const {
     display: block;
     border-radius: 0;
     object-fit: cover;
-    margin-top: 60px; /* pushes image or animation down */
+    margin-top: 60px;
   }
 
+  /* ============================= */
+  /* RESPONSIVE DESIGN ADJUSTMENTS */
+  /* ============================= */
+
+  /* Medium screens (iPads / small laptops) */
+  @media (max-width: 1024px) {
+    .content {
+      max-width: 80vw;
+      gap: 3rem;
+    }
+    .images-row {
+      gap: 15rem;
+    }
+    .image-wrapper {
+      margin-left: -10vw;
+    }
+    .text p {
+      font-size: 1.15rem;
+    }
+  }
+
+  /* Tablets / portrait devices */
   @media (max-width: 768px) {
-    .content, .images-row {
-      flex-wrap: wrap;
+    .second-section {
+      height: auto;
+      padding: 2rem 1rem;
+    }
+    .content {
+      flex-direction: column;
+      align-items: center;
+      max-width: 100%;
+      gap: 2rem;
+    }
+    .images-row {
+      flex-direction: column;
+      gap: 2rem;
+      align-items: center;
+    }
+    .image-wrapper {
+      margin-left: 0;
+      flex-basis: 100%;
+      max-width: 80%;
+    }
+    .image-wrapper img,
+    .image-wrapper lottie-player {
+      margin-top: 20px;
+    }
+    .text {
+      text-align: center;
+    }
+  }
+
+  /* Mobile phones */
+  @media (max-width: 480px) {
+    .text p {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    .images-row {
+      gap: 1rem;
     }
     .image-wrapper {
       max-width: 100%;
-      flex-basis: 100%;
-      margin-left: 0; /* reset margin on mobile */
+    }
+    .image-wrapper img,
+    .image-wrapper lottie-player {
+      width: 100%;
+      margin-top: 10px;
     }
   }
 
