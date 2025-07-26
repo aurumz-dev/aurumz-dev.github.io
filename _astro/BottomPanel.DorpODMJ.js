@@ -48,4 +48,16 @@ import{u as e}from"./jsxRuntime.module.BLZlUNXw.js";import{k as t}from"./preact.
             font-size: 0.8rem;
             color: #777;
           }
+
+          @media (max-width: 600px) {
+            .bottom-panel {
+              flex-direction: column;
+              align-items: center;
+              text-align: center;
+            }
+            .bottom-panel .right-side {
+              align-items: center;
+              white-space: normal;
+            }
+          }
         `})]})})}export{n as default};
