@@ -3,7 +3,7 @@ export default function BottomPanel() {
     <>
       <footer className="bottom-panel">
         <div className="left-side">
-          <span className="version">Version 1.0.1</span>
+          <span className="version"></span>
           <a
             href="https://github.com/aurumz-dev/aurumz-dev.github.io"
             target="_blank"

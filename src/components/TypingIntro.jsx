@@ -152,7 +152,7 @@ export default function TypingIntro({ onTypingComplete }) {
       {currentPath === '/' && showBottomPanel && (
         <footer className="bottom-panel">
           <div className="left-side">
-            <span className="version">Version 1.0.1</span>
+            <span className="version"></span>
             <a
               href="https://github.com/aurumz-dev/aurumz-dev.github.io"
               target="_blank"
@@ -164,7 +164,7 @@ export default function TypingIntro({ onTypingComplete }) {
           </div>
           <div className="right-side">
             Made with &lt;3 by Aurumz
-            <span className="last-update">Last Update: 2025-07-24</span>
+            <span className="last-update">Last Updated: 2025-07-26</span>
           </div>
         </footer>
       )}
