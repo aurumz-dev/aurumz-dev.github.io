@@ -1,54 +1,184 @@
-<!DOCTYPE html><html lang="en" class="lock-scroll" data-astro-cid-sckkx6r4> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Web | Aurumz</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css"><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="stylesheet" href="/_astro/dev.BIXRoxQH.css"></head> <body data-astro-cid-sckkx6r4>  <title>Home | Aurumz</title>  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" defer></script>  <!-- Load the progress script globally --> <script type="module" src="/src/scripts/progress.js"></script> </body> </html> <div id="root"> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="2dqJ18" component-url="/_astro/TypingIntro.CeOtltT5.js" component-export="default" renderer-url="/_astro/client.VJqI3Y3P.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;TypingIntro&quot;,&quot;value&quot;:true}" await-children><div class="aspect-ratio-container relative"><div class="typing-wrapper centered "><div><h1 class="main-title"></h1><p class="subtitle" style="display:inline-block;margin:0px;"></p></div></div><nav class="nav-panel hidden" id="nav-panel" aria-label="Main navigation"><a href="/" class="nav-link active">Main Page</a><a href="/projects" class="nav-link ">Projects</a><a href="/support" class="nav-link ">Support</a><a href="/dev" class="nav-link ">Dev</a></nav></div><style>
-          .fade-in {
-            opacity: 0;
-            animation: fadeInAnim 1s forwards;
-            animation-delay: 0.5s;
-          }
-          @keyframes fadeInAnim {
-            to {
-              opacity: 1;
-            }
-          }
+<!DOCTYPE html><html lang="en" class="lock-scroll" data-astro-cid-sckkx6r4> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Web | Aurumz</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css"><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="stylesheet" href="/_astro/dev.CDFGjkt8.css">
+<link rel="stylesheet" href="/_astro/index.CHXeT-eg.css"></head> <body data-astro-cid-sckkx6r4>  <title>Home | Aurumz</title>  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" defer></script>  <!-- Load the progress script globally --> <script type="module" src="/src/scripts/progress.js"></script> </body> </html> <div id="root"> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="GMhfl" component-url="/_astro/TypingIntro.Bg4xLHTt.js" component-export="default" renderer-url="/_astro/client.Oy7DOR9i.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;TypingIntro&quot;,&quot;value&quot;:true}" await-children><div class="aspect-ratio-container relative"><div class="typing-wrapper centered"><h1 class="main-title"></h1><p class="subtitle"></p></div><nav class="nav-panel hidden" id="nav-panel"><a href="/" class="nav-link active">Main Page</a><a href="/support" class="nav-link ">Support</a><a href="/dev" class="nav-link ">Dev</a></nav></div><style>
+        .bottom-panel {
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          background-color: #0e0e0e;
+          color: #ccc;
+          display: flex;
+          justify-content: space-between;
+          padding: 1rem 2rem;
+          font-size: 0.9rem;
+          border-top: 1px solid #222;
+          user-select: none;
+          z-index: 9999;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+        }
+        .bottom-panel .left-side {
+          display: flex;
+          flex-direction: column;
+          gap: 0.3rem;
+        }
+        .bottom-panel .right-side {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          gap: 0.2rem;
+          font-weight: 500;
+          white-space: nowrap;
+        }
+        .bottom-panel .github-link {
+          color: #4098ff;
+          text-decoration: none;
+          font-weight: 600;
+          transition: color 0.3s ease;
+          margin-top: 0.2rem;
+        }
+        .bottom-panel .github-link:hover,
+        .bottom-panel .github-link:focus {
+          color: #1a5fcc;
+          text-decoration: underline;
+        }
+        .bottom-panel .version {
+          font-weight: 600;
+        }
+        .bottom-panel .last-update {
+          font-size: 0.8rem;
+          color: #777;
+        }
 
-          .slide-left-blur {
-            animation: slideLeftBlur 0.6s forwards;
-          }
-          @keyframes slideLeftBlur {
-            to {
-              opacity: 0;
-              transform: translateX(-20px) scale(0.95);
-              filter: blur(4px);
-            }
-          }
+        /* =============================== */
+        /* RESPONSIVE ADJUSTMENTS START HERE */
+        /* =============================== */
 
-          .shift-left {
-            transform: translateX(-150px);
-            transition: transform 0.6s ease;
+        /* Very large screens (4K and bigger) */
+        @media (min-width: 1920px) {
+          .typing-wrapper.centered {
+            max-width: 900px;
+            padding: 0 2rem;
           }
+          .bottom-panel {
+            padding: 1rem 4rem;
+            font-size: 1rem;
+          }
+          .down-arrow {
+            font-size: 4rem;
+            margin-top: 2rem;
+          }
+        }
 
-          .typing-wrapper {
-            transition: transform 0.6s ease;
-            display: flex;
+        /* Large desktops (1200px - 1919px) */
+        @media (min-width: 1200px) and (max-width: 1919px) {
+          .typing-wrapper.centered {
+            max-width: 800px;
+            padding: 0 1.5rem;
+          }
+          .bottom-panel {
+            padding: 1rem 3rem;
+            font-size: 0.95rem;
+          }
+          .down-arrow {
+            font-size: 3.5rem;
+            margin-top: 1.5rem;
+          }
+        }
+
+        /* Medium desktops / laptops (992px - 1199px) */
+        @media (min-width: 992px) and (max-width: 1199px) {
+          .typing-wrapper.centered {
+            max-width: 750px;
+            padding: 0 1rem;
+          }
+          .bottom-panel {
+            padding: 1rem 2rem;
+            font-size: 0.9rem;
+          }
+          .down-arrow {
+            font-size: 3rem;
+            margin-top: 1rem;
+          }
+        }
+
+        /* Tablets (768px - 991px) */
+        @media (min-width: 768px) and (max-width: 991px) {
+          .typing-wrapper.centered {
+            max-width: 95%;
+            padding: 0 1rem;
+          }
+          .bottom-panel {
+            flex-direction: column;
             align-items: center;
-            gap: 1rem;
+            text-align: center;
+            padding: 1rem 1.5rem;
+            font-size: 0.9rem;
           }
+          .bottom-panel .right-side {
+            align-items: center;
+            white-space: normal;
+          }
+          .down-arrow {
+            font-size: 3.5rem;
+            margin-top: 1.5rem;
+          }
+        }
 
-          .lottie-right {
-            position: absolute;
-            top: 50%;
-            right: 6rem;
-            transform: translateY(-50%);
-            width: 180px;
-            height: 180px;
+        /* Mobile phones (up to 767px) */
+        @media (max-width: 767px) {
+          .typing-wrapper.centered {
+            max-width: 100%;
+            padding: 0 1rem;
           }
+          .bottom-panel {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1rem 1rem;
+            font-size: 0.85rem;
+          }
+          .bottom-panel .right-side {
+            align-items: center;
+            white-space: normal;
+          }
+          .down-arrow {
+            font-size: 4rem;
+            margin-top: 2rem;
+          }
+        }
 
-          .nav-panel.active {
-            opacity: 1;
-            transition: opacity 0.5s ease;
+        /* Extra small devices (up to 480px) */
+        @media (max-width: 480px) {
+          .typing-wrapper.centered {
+            padding: 0 0.5rem;
           }
+          .bottom-panel {
+            padding: 0.75rem 0.5rem;
+            font-size: 0.8rem;
+          }
+          .down-arrow {
+            font-size: 3rem;
+            margin-top: 1rem;
+          }
+        }
+      </style><!--astro:end--></astro-island> <section id="second-section" class="second-section hidden" data-astro-cid-vntmhlqa> <div class="content " data-astro-cid-vntmhlqa> <div class="text" data-astro-cid-vntmhlqa> <p data-astro-cid-vntmhlqa></p> </div> <div class="images-row" data-astro-cid-vntmhlqa> <div class="image-wrapper" data-astro-cid-vntmhlqa> <lottie-player src="/lottie/goldhammy.json" background="transparent" speed="1" style="width: 80%; height: auto; margin-top: 70px;" loop="true" autoplay="true" data-astro-cid-vntmhlqa="true"></lottie-player> </div> <div class="image-wrapper" key="0" data-astro-cid-vntmhlqa> <img src="/assets/Artboa.png" alt="Section image 1" data-astro-cid-vntmhlqa> </div> </div> </div> </section> <script type="module">
+  window.addEventListener('DOMContentLoaded', () => {
+    const section = document.getElementById("second-section");
+    if (!section) return;
 
-          .nav-panel.hidden {
-            opacity: 0;
-            transition: opacity 0.5s ease;
-          }
-        </style><!--astro:end--></astro-island> </div> 
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          section.classList.add('visible');
+          section.classList.remove('hidden');
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.1 });
+
+    observer.observe(section);
+  });
+</script>  <section class="section third-section" id="third-section" data-astro-cid-yny5ezrs> <div class="animate-fade full-width-wrapper" id="third-section-content" data-astro-cid-yny5ezrs> <div class="text-area" data-astro-cid-yny5ezrs> <div class="title-group" data-astro-cid-yny5ezrs> <h1 class="heading" data-astro-cid-yny5ezrs>Some of My Open Access Projects.</h1> <div class="subtitle" data-astro-cid-yny5ezrs>Click to access their Web!</div> </div> <p class="description" data-astro-cid-yny5ezrs>In case of Errors, Please reach out Anytime OR Create an Issue on Github! </p> </div> <div class="projects-wrapper" data-astro-cid-yny5ezrs> <astro-island uid="Z1W4epo" component-url="/_astro/ProjectsList.DKQxi6NC.js" component-export="default" renderer-url="/_astro/client.Oy7DOR9i.js" props="{&quot;data-astro-cid-yny5ezrs&quot;:[0,true]}" ssr client="load" opts="{&quot;name&quot;:&quot;ProjectsList&quot;,&quot;value&quot;:true}" await-children><section class="projects-section" style="width:100%;padding:0 1rem;box-sizing:border-box;"><div class="projects-grid" style="display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));width:100%;max-width:1600px;margin:0 auto;"><a href target="_blank" rel="noopener noreferrer" class="project-card" style="background-color:#0786cfff;"><h3>ReviewAid</h3><p>An advanced AI-powered tool that rapidly screens and extracts full-text data from multiple research articles, determining inclusion or exclusion based on your research criteria — all in just seconds. Github Source: </p><div class="project-tags"><span class="tag">Full-text Screener</span><span class="tag">Extractor</span><span class="tag">Ai</span></div></a></div></section><!--astro:end--></astro-island> </div> </div> <footer class="bottom-panel hidden" id="bottom-panel" data-astro-cid-yny5ezrs> <div class="left-side" data-astro-cid-yny5ezrs> <span class="version" data-astro-cid-yny5ezrs>Version 1.0.1</span> <a href="https://github.com/aurumz-dev/aurumz-dev.github.io" target="_blank" rel="noopener noreferrer" class="github-link" data-astro-cid-yny5ezrs>
+GitHub Source Code
+</a> </div> <div class="right-side" data-astro-cid-yny5ezrs> <div data-astro-cid-yny5ezrs>Made with &lt;3 by Aurumz</div> <div class="last-update" data-astro-cid-yny5ezrs>Last Update: 2025-07-24</div> </div> </footer> </section> <script type="module">window.addEventListener("DOMContentLoaded",()=>{const e=document.getElementById("bottom-panel"),t=setInterval(()=>{document.querySelector(".nav-upper")?.classList.contains("visible")&&(e.classList.remove("hidden"),e.classList.add("fade-in"),clearInterval(t))},300)});</script>  </div> 
