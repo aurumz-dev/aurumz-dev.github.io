@@ -1,8 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import TypingIntro from '../components/TypingIntro.jsx';
-import SecondSection from '../components/SecondSection.astro';
-import ThirdSection from '../components/ThirdSection.astro';
+
 ---
 
 <Layout>
@@ -15,18 +14,6 @@ import ThirdSection from '../components/ThirdSection.astro';
   <div id="root">
     <TypingIntro client:load />
 
-    <SecondSection
-      id="second-section"
-      images={[
-        "/assets/Artboa.png"
-      ]}
-      reverse={false}
-    />
-
-    <ThirdSection
-      id="third-section"
-      heading="Some of My Open Access Projects."
-      subtitle="Click to access their Web!"
-    />
+    
   </div>
 </Layout>

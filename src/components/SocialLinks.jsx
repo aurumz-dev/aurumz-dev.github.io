@@ -21,7 +21,7 @@ export default function SocialLinks() {
             height="50"
             viewBox="0 0 24 24"
             fill="none"
-            stroke="#E9E3DF"
+            stroke="#e9e3dfca"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -33,7 +33,7 @@ export default function SocialLinks() {
         </a>
 
         <a
-          href="https://github.com/aurumz-dev"
+          href="https://github.com/aurumz-rgb"
           title="GitHub"
           target="_blank"
           rel="noopener noreferrer"
@@ -46,7 +46,7 @@ export default function SocialLinks() {
             height="45"
             viewBox="0 0 24 24"
             fill="none"
-            stroke="#E9E3DF"
+            stroke="#e9e3dfca"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"

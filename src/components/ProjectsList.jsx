@@ -6,10 +6,12 @@ export default function ProjectsList() {
       name: "ReviewAid",
       link: "",
       description:
-        "An advanced AI-powered tool that rapidly screens and extracts full-text data from multiple research articles, determining inclusion or exclusion based on your research criteria — all in just seconds. Github Source: ",
-      tags: ["Full-text Screener", "Extractor", "Ai"],
-      backgroundColor: "#0786cfff",
+        "An advanced AI-powered tool that rapidly screens and extracts full-text data from multiple research articles, determining inclusion or exclusion based on your research criteria — all in just seconds.",
+      github: "https://github.com/aurumz-dev/reviewaid",
+      tags: ["Full-text Screener", "Extractor", "AI"],
+      backgroundColor: "#00466fff",
     },
+    // Add more projects here
   ];
 
   return (
@@ -17,7 +19,7 @@ export default function ProjectsList() {
       className="projects-section"
       style={{
         width: '100%',
-        padding: '0 1rem', // Padding for small screens
+        padding: '0 0.651rem', // 0.7 * 0.93
         boxSizing: 'border-box',
       }}
     >
@@ -25,15 +27,19 @@ export default function ProjectsList() {
         className="projects-grid"
         style={{
           display: 'grid',
-          gap: '1.5rem',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: '0.976rem', // 1.05 * 0.93
+          gridTemplateColumns: 'repeat(auto-fit, minmax(182.28px, 1fr))', // 196 * 0.93
           width: '100%',
           maxWidth: '1600px',
           margin: '0 auto',
         }}
       >
-        {projects.map((project) => (
-          <ProjectCard key={project.name} {...project} />
+        {projects.map(({ github, ...project }) => (
+          <ProjectCard
+            key={project.name}
+            {...project}
+            github={github}
+          />
         ))}
       </div>
     </section>
