@@ -48,41 +48,6 @@ export default function App() {
           ↓
         </div>
       )}
-
-      <style>{`
-        .down-arrow {
-          position: fixed;
-          left: 50%;
-          transform: translateX(-50%);
-          cursor: pointer;
-          color: #f2855d;
-          transition: transform 0.3s ease;
-          z-index: 20;
-        }
-
-        .down-arrow:hover {
-          transform: translateX(-50%) scale(1.1);
-        }
-
-        @media (max-width: 480px) {
-          .down-arrow {
-            font-size: 2rem !important;
-            bottom: 30px !important;
-          }
-        }
-
-        @media (min-width: 481px) and (max-width: 768px) {
-          .down-arrow {
-            font-size: 2.5rem !important;
-          }
-        }
-
-        @media (min-width: 1440px) {
-          .down-arrow {
-            font-size: 3.5rem !important;
-          }
-        }
-      `}</style>
     </>
   );
 }
