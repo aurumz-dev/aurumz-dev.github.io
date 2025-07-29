@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import DevIntro from '../components/DevIntro.jsx';
 import BottomPanel from '../components/BottomPanel.jsx';
+import SocialLinks from '../components/SocialLinks.jsx'; 
 ---
 
 <Layout>
@@ -14,6 +15,8 @@ import BottomPanel from '../components/BottomPanel.jsx';
   <section id="third-section" class="section third-section">
     <h2>Dev Projects</h2>
   </section>
+
+  <SocialLinks client:load />
 
   <BottomPanel client:load />
 </Layout>

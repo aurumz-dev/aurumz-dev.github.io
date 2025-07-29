@@ -171,63 +171,130 @@ export default function TypingIntro({ onTypingComplete }) {
         </footer>
       )}
 
-      {/* Styles */}
+      
       <style>
-        {`
-          .fade-in {
-            opacity: 0;
-            animation: fadeInAnim 1s forwards;
-            animation-delay: 0.5s;
-          }
-          @keyframes fadeInAnim {
-            to {
-              opacity: 1;
-            }
-          }
+  {`
+    .fade-in {
+      opacity: 0;
+      animation: fadeInAnim 1s forwards;
+      animation-delay: 0.5s;
+    }
+    @keyframes fadeInAnim {
+      to {
+        opacity: 1;
+      }
+    }
 
-          .slide-left-blur {
-            animation: slideLeftBlur 0.6s forwards;
-          }
-          @keyframes slideLeftBlur {
-            to {
-              opacity: 0;
-              transform: translateX(-20px) scale(0.95);
-              filter: blur(4px);
-            }
-          }
+    .slide-left-blur {
+      animation: slideLeftBlur 0.6s forwards;
+    }
+    @keyframes slideLeftBlur {
+      to {
+        opacity: 0;
+        transform: translateX(-20px) scale(0.95);
+        filter: blur(4px);
+      }
+    }
 
-          .shift-left {
-            transform: translateX(-150px);
-            transition: transform 0.6s ease;
-          }
+    .shift-left {
+      transform: translateX(-150px);
+      transition: transform 0.6s ease;
+    }
 
-          .typing-wrapper {
-            transition: transform 0.6s ease;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-          }
+    .typing-wrapper {
+      transition: transform 0.6s ease;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      padding: 1rem;
+    }
 
-          .lottie-right {
-            position: absolute;
-            top: 50%;
-            right: 6rem;
-            transform: translateY(-50%);
-            width: 180px;
-            height: 180px;
-          }
+    .main-title {
+      font-size: 2rem;
+    }
 
-          .nav-panel.active {
-            opacity: 1;
-            transition: opacity 0.5s ease;
-          }
+    .subtitle {
+      font-size: 1.2rem;
+    }
 
-          .nav-panel.hidden {
-            opacity: 0;
-            transition: opacity 0.5s ease;
-          }
-        `}
-      </style>
+    .lottie-right {
+      position: absolute;
+      top: 50%;
+      right: 6rem;
+      transform: translateY(-50%);
+      width: 180px;
+      height: 180px;
+    }
+
+    .nav-panel.active {
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+
+    .nav-panel.hidden {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    @media (max-width: 1024px) {
+      .lottie-right {
+        width: 140px;
+        height: 140px;
+        right: 3rem;
+      }
+
+      .main-title {
+        font-size: 1.8rem;
+      }
+
+      .subtitle {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .lottie-right {
+        position: static;
+        transform: none;
+        margin-top: 2rem;
+        width: 120px;
+        height: 120px;
+        align-self: center;
+      }
+
+      .typing-wrapper {
+        justify-content: center;
+        text-align: center;
+        padding: 2rem 1rem;
+      }
+
+      .main-title {
+        font-size: 1.6rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .lottie-right {
+        width: 100px;
+        height: 100px;
+      }
+
+      .main-title {
+        font-size: 1.4rem;
+      }
+
+      .subtitle {
+        font-size: 0.95rem;
+      }
+    }
+  `}
+</style>
+
     </>
   );
 }

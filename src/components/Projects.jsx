@@ -102,6 +102,61 @@ export default function Projects() {
           Dev
         </a>
       </nav>
+
+      <style>{`
+        /* Small phones */
+        @media (max-width: 480px) {
+          .typing-wrapper {
+            flex-direction: column !important;
+            text-align: center !important;
+            gap: 1rem !important;
+          }
+          .nav-panel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+          }
+        }
+
+        /* Tablets */
+        @media (min-width: 481px) and (max-width: 768px) {
+          .typing-wrapper {
+            justify-content: center !important;
+            text-align: center !important;
+          }
+          .nav-panel {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+          }
+        }
+
+        /* Small laptops */
+        @media (min-width: 769px) and (max-width: 1024px) {
+          .typing-wrapper {
+            justify-content: flex-start;
+          }
+          .nav-panel {
+            display: flex;
+            justify-content: flex-start;
+            gap: 1.2rem;
+          }
+        }
+
+        /* Large screens */
+        @media (min-width: 1440px) {
+          .typing-wrapper {
+            gap: 2.5rem !important;
+          }
+          .nav-panel {
+            font-size: 1.2rem;
+            gap: 2rem;
+          }
+        }
+      `}</style>
     </div>
   );
 }

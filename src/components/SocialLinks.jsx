@@ -66,6 +66,41 @@ export default function SocialLinks() {
             justify-content: center !important;
           }
         }
+
+        /* Tablets (portrait) */
+        @media (min-width: 481px) and (max-width: 768px) {
+          .social-links {
+            justify-content: center;
+            gap: 0.8rem;
+          }
+          .social-icon {
+            width: 40px;
+            height: 40px;
+          }
+        }
+
+        /* Small laptops */
+        @media (min-width: 769px) and (max-width: 1024px) {
+          .social-links {
+            justify-content: flex-start;
+            gap: 1rem;
+          }
+          .social-icon {
+            width: 45px;
+            height: 45px;
+          }
+        }
+
+        /* Very large screens */
+        @media (min-width: 1440px) {
+          .social-links {
+            gap: 2rem;
+          }
+          .social-icon {
+            width: 60px;
+            height: 60px;
+          }
+        }
       `}</style>
     </>
   );

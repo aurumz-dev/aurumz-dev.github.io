@@ -38,6 +38,34 @@ const currentPath = Astro.url.pathname;
       .lock-scroll {
         overflow: hidden;
       }
+
+      /* Responsive global adjustments */
+      @media (max-width: 480px) {
+        body {
+          font-size: 0.9rem;
+          padding: 0.5rem;
+        }
+      }
+
+      @media (min-width: 481px) and (max-width: 768px) {
+        body {
+          font-size: 0.95rem;
+        }
+      }
+
+      @media (min-width: 1025px) and (max-width: 1439px) {
+        body {
+          font-size: 1rem;
+        }
+      }
+
+      @media (min-width: 1440px) {
+        body {
+          font-size: 1.1rem;
+          max-width: 1600px;
+          margin: 0 auto;
+        }
+      }
     </style>
   </head>
 

@@ -50,7 +50,6 @@ export default function DevIntro() {
     <div
       className="aspect-ratio-container"
       ref={containerRef}
-      // Remove inline overflow style to avoid conflict with scroll locking
     >
       <div
         className="typing-wrapper shift-left"
@@ -178,6 +177,72 @@ export default function DevIntro() {
           Dev
         </a>
       </nav>
+
+      <style>{`
+        /* Phones */
+        @media (max-width: 480px) {
+          .typing-wrapper {
+            text-align: center !important;
+            padding: 1rem !important;
+          }
+          #third-section > div {
+            grid-template-columns: 1fr !important;
+          }
+          .project-card {
+            padding: 0.9rem !important;
+          }
+          .nav-panel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+          }
+        }
+
+        /* Tablets */
+        @media (min-width: 481px) and (max-width: 768px) {
+          .typing-wrapper {
+            text-align: center !important;
+          }
+          #third-section > div {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+          }
+          .nav-panel {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+          }
+        }
+
+        /* Small laptops */
+        @media (min-width: 769px) and (max-width: 1024px) {
+          .typing-wrapper {
+            text-align: left !important;
+          }
+          #third-section > div {
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+          }
+          .nav-panel {
+            display: flex;
+            justify-content: flex-start;
+            gap: 1.2rem;
+          }
+        }
+
+        /* Large screens */
+        @media (min-width: 1440px) {
+          #third-section > div {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+            gap: 1.5rem !important;
+          }
+          .nav-panel {
+            font-size: 1.2rem;
+            gap: 2rem;
+          }
+        }
+      `}</style>
     </div>
   );
 }
