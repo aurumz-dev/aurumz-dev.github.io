@@ -1,20 +1,52 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import TypingIntro from '../components/TypingIntro.jsx';
-
+import "../styles/global.css";
+const currentPath = Astro.url.pathname;
 ---
 
-<Layout>
-  <head slot="head">
-    <title>Home | Aurumz</title>
-    <!-- Add Lottie player script here if not added globally -->
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" defer></script>
+<html lang="en" class="lock-scroll">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Web | Aurumz</title>
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap"
+    />
+
+    <slot name="head" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <style>
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+        height: 100%;
+      }
+      body {
+        background: #0f141fff;
+        margin: 0;
+        height: 100%;
+        font-family: 'Fira Code', 'JetBrains Mono', monospace;
+        color: #E8E8F0;
+      }
+      input, textarea, button, select {
+        font-family: 'Fira Code', 'JetBrains Mono', monospace;
+        color: #E9E3DF;
+      }
+      .lock-scroll {
+        overflow: hidden;
+      }
+
+
+     
+    </style>
   </head>
 
-  <div id="root">
-    <TypingIntro client:load />
-
-    
-  </div>
-</Layout>
-
+  <body>
+    <slot />
+    <!-- Load the progress script globally -->
+    <script type="module" src="/src/scripts/progress.js"></script>
+  </body>
+</html>
