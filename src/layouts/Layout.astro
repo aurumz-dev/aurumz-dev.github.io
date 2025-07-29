@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import NProgressLoader from "../components/NProgressLoader.jsx";
 const currentPath = Astro.url.pathname;
 ---
 
@@ -38,15 +39,12 @@ const currentPath = Astro.url.pathname;
       .lock-scroll {
         overflow: hidden;
       }
-
-
-     
     </style>
   </head>
 
   <body>
     <slot />
-    <!-- Load the progress script globally -->
-    <script type="module" src="/src/scripts/progress.js"></script>
+    <!-- Mount the progress loader so it runs on every page -->
+    <NProgressLoader client:load />
   </body>
 </html>
